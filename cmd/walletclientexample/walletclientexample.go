@@ -1,11 +1,11 @@
 package walletclientexample
 
 import (
-	"github.com/huobirdcenter/huobi_golang/config"
-	"github.com/huobirdcenter/huobi_golang/logging/applogger"
-	"github.com/huobirdcenter/huobi_golang/pkg/client"
-	"github.com/huobirdcenter/huobi_golang/pkg/model"
-	"github.com/huobirdcenter/huobi_golang/pkg/model/wallet"
+	"github.com/funtoy/huobi_golang/config"
+	"github.com/funtoy/huobi_golang/logging/applogger"
+	"github.com/funtoy/huobi_golang/pkg/client"
+	"github.com/funtoy/huobi_golang/pkg/model"
+	"github.com/funtoy/huobi_golang/pkg/model/wallet"
 )
 
 func RunAllExamples() {
@@ -18,7 +18,7 @@ func RunAllExamples() {
 }
 
 func getDepositAddress() {
-	client := new(client.WalletClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.WalletClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	currency := "usdt"
 	resp, err := client.GetDepositAddress(currency)
 	if err != nil {
@@ -32,7 +32,7 @@ func getDepositAddress() {
 }
 
 func getWithdrawQuota() {
-	client := new(client.WalletClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.WalletClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	currency := "usdt"
 	resp, err := client.GetWithdrawQuota(currency)
 	if err != nil {
@@ -43,7 +43,7 @@ func getWithdrawQuota() {
 }
 
 func getWithdrawAddress() {
-	client := new(client.WalletClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.WalletClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	request := new(model.GetRequest).Init()
 	request.AddParam("currency", "btc")
 
@@ -61,7 +61,7 @@ func getWithdrawAddress() {
 }
 
 func createWithdraw() {
-	client := new(client.WalletClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.WalletClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	createWithdrawRequest := wallet.CreateWithdrawRequest{
 		Address:  "xxxx",
 		Amount:   "1.0",
@@ -76,7 +76,7 @@ func createWithdraw() {
 }
 
 func cancelWithdraw() {
-	client := new(client.WalletClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.WalletClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	resp, err := client.CancelWithdraw(12345)
 	if err != nil {
 		applogger.Error("Cancel withdraw error: %s", err)
@@ -86,7 +86,7 @@ func cancelWithdraw() {
 }
 
 func queryDepositWithdraw() {
-	client := new(client.WalletClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.WalletClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	depositType := "deposit"
 	queryDepositWithdrawOptionalRequest := wallet.QueryDepositWithdrawOptionalRequest{Currency: "usdt"}
 	resp, err := client.QueryDepositWithdraw(depositType, queryDepositWithdrawOptionalRequest)

@@ -1,7 +1,7 @@
 package market
 
 import (
-	"github.com/huobirdcenter/huobi_golang/pkg/model/base"
+	"github.com/funtoy/huobi_golang/pkg/model/base"
 )
 
 type SubscribeLast24hCandlestickResponse struct {

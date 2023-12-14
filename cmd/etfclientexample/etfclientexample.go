@@ -1,10 +1,10 @@
 package etfclientexample
 
 import (
-	"github.com/huobirdcenter/huobi_golang/config"
-	"github.com/huobirdcenter/huobi_golang/logging/applogger"
-	"github.com/huobirdcenter/huobi_golang/pkg/client"
-	"github.com/huobirdcenter/huobi_golang/pkg/model/etf"
+	"github.com/funtoy/huobi_golang/config"
+	"github.com/funtoy/huobi_golang/logging/applogger"
+	"github.com/funtoy/huobi_golang/pkg/client"
+	"github.com/funtoy/huobi_golang/pkg/model/etf"
 )
 
 func RunAllExamples() {
@@ -14,9 +14,9 @@ func RunAllExamples() {
 	swapOut()
 }
 
-//  Get the basic information of ETF creation and redemption
+// Get the basic information of ETF creation and redemption
 func getSwapConfig() {
-	client := new(client.ETFClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.ETFClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	currency := "hb10"
 	resp, err := client.GetSwapConfig(currency)
 	if err != nil {
@@ -26,9 +26,9 @@ func getSwapConfig() {
 	}
 }
 
-//  Get past creation and redemption.(up to 100 records)
+// Get past creation and redemption.(up to 100 records)
 func getSwapList() {
-	client := new(client.ETFClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.ETFClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	currency := "hb10"
 	resp, err := client.GetSwapList(currency, 0, 10)
 	if err != nil {
@@ -40,9 +40,9 @@ func getSwapList() {
 	}
 }
 
-//  Allow clients to order creation of ETF.
+// Allow clients to order creation of ETF.
 func swapIn() {
-	client := new(client.ETFClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.ETFClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	currency := "hb10"
 	swapRequest := etf.SwapRequest{
 		EtfName: currency,
@@ -56,9 +56,9 @@ func swapIn() {
 	}
 }
 
-//  Allow clients to order redemption of ETF.
+// Allow clients to order redemption of ETF.
 func swapOut() {
-	client := new(client.ETFClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.ETFClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	currency := "hb10"
 	swapRequest := etf.SwapRequest{
 		EtfName: currency,

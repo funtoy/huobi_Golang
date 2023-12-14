@@ -1,7 +1,7 @@
 package market
 
 import (
-	"github.com/huobirdcenter/huobi_golang/pkg/model/base"
+	"github.com/funtoy/huobi_golang/pkg/model/base"
 	"github.com/shopspring/decimal"
 )
 
@@ -10,6 +10,11 @@ type SubscribeCandlestickResponse struct {
 	Tick *Tick
 	Data []Tick
 }
+
+func (receiver *SubscribeCandlestickResponse) GetChannel() string {
+	return receiver.base.Channel
+}
+
 type Tick struct {
 	Id     int64           `json:"id"`
 	Amount decimal.Decimal `json:"amount"`

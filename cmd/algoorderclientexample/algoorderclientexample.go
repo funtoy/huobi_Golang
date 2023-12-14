@@ -1,11 +1,11 @@
 package algoorderclientexample
 
 import (
-	"github.com/huobirdcenter/huobi_golang/config"
-	"github.com/huobirdcenter/huobi_golang/logging/applogger"
-	"github.com/huobirdcenter/huobi_golang/pkg/client"
-	"github.com/huobirdcenter/huobi_golang/pkg/model"
-	"github.com/huobirdcenter/huobi_golang/pkg/model/algoorder"
+	"github.com/funtoy/huobi_golang/config"
+	"github.com/funtoy/huobi_golang/logging/applogger"
+	"github.com/funtoy/huobi_golang/pkg/client"
+	"github.com/funtoy/huobi_golang/pkg/model"
+	"github.com/funtoy/huobi_golang/pkg/model/algoorder"
 )
 
 func RunAllExamples() {
@@ -17,7 +17,7 @@ func RunAllExamples() {
 }
 
 func placeOrder() {
-	client := new(client.AlgoOrderClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.AlgoOrderClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	request := algoorder.PlaceOrderRequest{
 		AccountId:     11136102,
 		Symbol:        "htusdt",
@@ -42,7 +42,7 @@ func placeOrder() {
 }
 
 func cancelOder() {
-	client := new(client.AlgoOrderClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.AlgoOrderClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	request := algoorder.CancelOrdersRequest{
 		ClientOrderIds: []string{"huobi1901"},
 	}
@@ -68,7 +68,7 @@ func cancelOder() {
 }
 
 func getOpenOrders() {
-	client := new(client.AlgoOrderClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.AlgoOrderClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	request := new(model.GetRequest).Init()
 	request.AddParam("accountId", config.AccountId)
 
@@ -90,7 +90,7 @@ func getOpenOrders() {
 }
 
 func getHistoryOrders() {
-	client := new(client.AlgoOrderClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.AlgoOrderClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	request := new(model.GetRequest).Init()
 	request.AddParam("symbol", "htusdt")
 	request.AddParam("orderStatus", "canceled")
@@ -113,7 +113,7 @@ func getHistoryOrders() {
 }
 
 func getSpecificOrder() {
-	client := new(client.AlgoOrderClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.AlgoOrderClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	request := new(model.GetRequest).Init()
 	request.AddParam("clientOrderId", "huobi1901")
 

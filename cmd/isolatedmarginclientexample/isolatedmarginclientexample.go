@@ -1,10 +1,10 @@
 package isolatedmarginclientexample
 
 import (
-	"github.com/huobirdcenter/huobi_golang/config"
-	"github.com/huobirdcenter/huobi_golang/logging/applogger"
-	"github.com/huobirdcenter/huobi_golang/pkg/client"
-	"github.com/huobirdcenter/huobi_golang/pkg/model/margin"
+	"github.com/funtoy/huobi_golang/config"
+	"github.com/funtoy/huobi_golang/logging/applogger"
+	"github.com/funtoy/huobi_golang/pkg/client"
+	"github.com/funtoy/huobi_golang/pkg/model/margin"
 )
 
 func RunAllExamples() {
@@ -23,7 +23,7 @@ func transferIn() {
 		Currency: "usdt",
 		Amount:   "1.0",
 		Symbol:   "btcusdt"}
-	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	resp, err := client.TransferIn(request)
 	if err != nil {
 		applogger.Error(err.Error())
@@ -32,13 +32,13 @@ func transferIn() {
 	}
 }
 
-//  Transfer specific asset from isolated margin account to spot trading account.
+// Transfer specific asset from isolated margin account to spot trading account.
 func transferOut() {
 	request := margin.IsolatedMarginTransferRequest{
 		Currency: "usdt",
 		Amount:   "1.0",
 		Symbol:   "btcusdt"}
-	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	resp, err := client.TransferOut(request)
 	if err != nil {
 		applogger.Error(err.Error())
@@ -47,10 +47,10 @@ func transferOut() {
 	}
 }
 
-//  Get the loan interest rates and quota applied on the user.
+// Get the loan interest rates and quota applied on the user.
 func getMarginLoanInfo() {
 	optionalRequest := margin.GetMarginLoanInfoOptionalRequest{Symbols: "btcusdt"}
-	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	resp, err := client.GetMarginLoanInfo(optionalRequest)
 	if err != nil {
 		applogger.Error(err.Error())
@@ -61,9 +61,9 @@ func getMarginLoanInfo() {
 	}
 }
 
-//  Place an order to apply a margin loan.
+// Place an order to apply a margin loan.
 func marginOrders() {
-	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	request := margin.IsolatedMarginOrdersRequest{
 		Currency: "eos",
 		Amount:   "0.001",
@@ -79,7 +79,7 @@ func marginOrders() {
 
 // Repay margin loan with you asset in your margin account.
 func marginOrdersRepay() {
-	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	orderId := "12345"
 	request := margin.MarginOrdersRepayRequest{Amount: "1.0"}
 	resp, err := client.Repay(orderId, request)
@@ -90,9 +90,9 @@ func marginOrdersRepay() {
 	}
 }
 
-//  Get the margin orders based on a specific searching criteria.
+// Get the margin orders based on a specific searching criteria.
 func marginLoanOrders() {
-	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	optionalRequest := margin.IsolatedMarginLoanOrdersOptionalRequest{
 		StartDate: "2020-1-1",
 	}
@@ -106,11 +106,11 @@ func marginLoanOrders() {
 	}
 }
 
-//  Get the balance of the margin loan account.
+// Get the balance of the margin loan account.
 func marginAccountsBalance() {
 	optionalRequest := margin.MarginAccountsBalanceOptionalRequest{
 		Symbol: "btcusdt"}
-	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(client.IsolatedMarginClient).Init(config.AccessKey, config.AccessKey, config.Host)
 	resp, err := client.MarginAccountsBalance(optionalRequest)
 	if err != nil {
 		applogger.Error(err.Error())

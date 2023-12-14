@@ -2,11 +2,11 @@ package orderwebsocketclientexample
 
 import (
 	"fmt"
-	"github.com/huobirdcenter/huobi_golang/config"
-	"github.com/huobirdcenter/huobi_golang/logging/applogger"
-	"github.com/huobirdcenter/huobi_golang/pkg/client/orderwebsocketclient"
-	"github.com/huobirdcenter/huobi_golang/pkg/model/auth"
-	"github.com/huobirdcenter/huobi_golang/pkg/model/order"
+	"github.com/funtoy/huobi_golang/config"
+	"github.com/funtoy/huobi_golang/logging/applogger"
+	"github.com/funtoy/huobi_golang/pkg/client/orderwebsocketclient"
+	"github.com/funtoy/huobi_golang/pkg/model/auth"
+	"github.com/funtoy/huobi_golang/pkg/model/order"
 )
 
 func RunAllExamples() {
@@ -16,7 +16,7 @@ func RunAllExamples() {
 
 func subOrderUpdateV2() {
 	// Initialize a new instance
-	client := new(orderwebsocketclient.SubscribeOrderWebSocketV2Client).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(orderwebsocketclient.SubscribeOrderWebSocketV2Client).Init(config.AccessKey, config.AccessKey, config.Host)
 
 	// Set the callback handlers
 	client.SetHandler(
@@ -65,7 +65,7 @@ func subOrderUpdateV2() {
 
 func subTradeClear() {
 	// Initialize a new instance
-	client := new(orderwebsocketclient.SubscribeTradeClearWebSocketV2Client).Init(config.AccessKey, config.SecretKey, config.Host)
+	client := new(orderwebsocketclient.SubscribeTradeClearWebSocketV2Client).Init(config.AccessKey, config.AccessKey, config.Host)
 
 	// Set the callback handlers
 	client.SetHandler(

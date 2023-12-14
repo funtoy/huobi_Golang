@@ -3,10 +3,10 @@ package client
 import (
 	"encoding/json"
 	"errors"
-	"github.com/huobirdcenter/huobi_golang/internal"
-	"github.com/huobirdcenter/huobi_golang/internal/requestbuilder"
-	"github.com/huobirdcenter/huobi_golang/pkg/model"
-	"github.com/huobirdcenter/huobi_golang/pkg/model/wallet"
+	"github.com/funtoy/huobi_golang/internal"
+	"github.com/funtoy/huobi_golang/internal/requestbuilder"
+	"github.com/funtoy/huobi_golang/pkg/model"
+	"github.com/funtoy/huobi_golang/pkg/model/wallet"
 	"strconv"
 )
 
@@ -67,8 +67,7 @@ func (p *WalletClient) GetWithdrawQuota(currency string) (*wallet.WithdrawQuota,
 	return nil, errors.New(getResp)
 }
 
-
-//  Parent user to query withdraw address available for API key
+// Parent user to query withdraw address available for API key
 func (p *WalletClient) GetWithdrawAddress(request *model.GetRequest) (*wallet.GetWithdrawAddressResponse, error) {
 	url := p.privateUrlBuilder.Build("GET", "/v2/account/withdraw/address", request)
 	getResp, getErr := internal.HttpGet(url)
