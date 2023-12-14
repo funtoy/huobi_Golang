@@ -58,7 +58,6 @@ func (p *CandlestickWebSocketClient) UnSubscribe(symbol string, period string, c
 }
 
 func (p *CandlestickWebSocketClient) handleMessage(msg string) (interface{}, error) {
-	fmt.Println(msg)
 	result := market.SubscribeCandlestickResponse{}
 	err := json.Unmarshal([]byte(msg), &result)
 	if result.Channel != "" {
