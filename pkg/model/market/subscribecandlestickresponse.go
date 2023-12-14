@@ -11,7 +11,7 @@ type SubscribeCandlestickResponse struct {
 	Data []Tick
 }
 
-func (receiver *SubscribeCandlestickResponse) GetChannel() string {
+func (receiver SubscribeCandlestickResponse) GetChannel() string {
 	return receiver.base.Channel
 }
 
