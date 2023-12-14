@@ -10,13 +10,13 @@ import (
 
 func RunAllExamples() {
 	reqAndSubscribeCandlestick()
-	reqAndSubscribeDepth()
-	reqAndSubscribe150LevelMarketByPrice()
-	subscribeFullMarketByPrice()
-	reqAndSubscribeMarketByPriceTick()
-	subscribeBBO()
-	reqAndSubscribeTrade()
-	reqAndSubscribeLast24hCandlestick()
+	//reqAndSubscribeDepth()
+	//reqAndSubscribe150LevelMarketByPrice()
+	//subscribeFullMarketByPrice()
+	//reqAndSubscribeMarketByPriceTick()
+	//subscribeBBO()
+	//reqAndSubscribeTrade()
+	//reqAndSubscribeLast24hCandlestick()
 }
 
 func reqAndSubscribeCandlestick() {
@@ -25,9 +25,10 @@ func reqAndSubscribeCandlestick() {
 
 	client.SetHandler(
 		func() {
-			client.Request("btcusdt", "1min", 1569361140, 1569366420, "2305")
+			//client.Request("btcusdt", "1min", 1569361140, 1569366420, "2305")
 
 			client.Subscribe("btcusdt", "1min", "2118")
+			client.Subscribe("ethusdt", "1min", "2108")
 		},
 		func(response interface{}) {
 			resp, ok := response.(market.SubscribeCandlestickResponse)
@@ -35,8 +36,8 @@ func reqAndSubscribeCandlestick() {
 				if &resp != nil {
 					if resp.Tick != nil {
 						t := resp.Tick
-						applogger.Info("Candlestick update, id: %d, count: %d, vol: %v [%v-%v-%v-%v]",
-							t.Id, t.Count, t.Vol, t.Open, t.Close, t.Low, t.High)
+						applogger.Info("<%v> update, id: %d, count: %d, vol: %v [%v-%v-%v-%v]",
+							resp.GetChannel(), t.Id, t.Count, t.Vol, t.Open, t.Close, t.Low, t.High)
 					}
 
 					if resp.Data != nil {

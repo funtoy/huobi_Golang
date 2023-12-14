@@ -6,13 +6,14 @@ import (
 )
 
 type SubscribeCandlestickResponse struct {
-	base base.WebSocketResponseBase
-	Tick *Tick
-	Data []Tick
+	base    base.WebSocketResponseBase
+	Channel string `json:"ch"`
+	Tick    *Tick
+	Data    []Tick
 }
 
 func (receiver SubscribeCandlestickResponse) GetChannel() string {
-	return receiver.base.Channel
+	return receiver.Channel
 }
 
 type Tick struct {

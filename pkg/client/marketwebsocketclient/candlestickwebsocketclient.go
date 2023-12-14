@@ -6,6 +6,7 @@ import (
 	"github.com/funtoy/huobi_golang/logging/applogger"
 	"github.com/funtoy/huobi_golang/pkg/client/websocketclientbase"
 	"github.com/funtoy/huobi_golang/pkg/model/market"
+	"strings"
 )
 
 // Responsible to handle candlestick data from WebSocket
@@ -57,7 +58,13 @@ func (p *CandlestickWebSocketClient) UnSubscribe(symbol string, period string, c
 }
 
 func (p *CandlestickWebSocketClient) handleMessage(msg string) (interface{}, error) {
+	fmt.Println(msg)
 	result := market.SubscribeCandlestickResponse{}
 	err := json.Unmarshal([]byte(msg), &result)
+	if result.Channel != "" {
+		if len(strings.Split(result.Channel, ".")) >= 2 {
+			result.Channel = strings.Split(result.Channel, ".")[1]
+		}
+	}
 	return result, err
 }
